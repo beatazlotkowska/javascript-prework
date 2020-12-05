@@ -31,13 +31,45 @@ if (playerInput == 1) {
 	playerMove = 'nożyce';
 
 } else {
-	playerMove = 'nie ma takiego ruchu xd';
+	playerMove = 'nieznany ruch';
 }
 
 
+if (computerMove == 'kamień' && playerMove == 'papier') {
+	printMessage('Beata wygrała');
+
+} else if (computerMove == 'nożyce' && playerMove == 'kamień') {
+	printMessage('Beata wygrała');
+
+} else if (computerMove == 'papier' && playerMove == 'nożyce') {
+	printMessage('Beata wygrała');
+
+} else if (computerMove == 'kamień' && playerMove == 'nożyce') {
+	printMessage('Computer wins');
+
+} else if (computerMove == 'papier' && playerMove == 'kamień') {
+	printMessage('Computer wins');
+
+} else if (computerMove == 'nożyce' && playerMove == 'papier') {
+	printMessage('Computer wins');
+
+} else if (computerMove == 'kamień' && playerMove == 'kamień') {
+	printMessage('Remis');
+
+} else if (computerMove == 'papier' && playerMove == 'papier') {
+	printMessage('Remis');
+
+} else if (computerMove == 'nożyce' && playerMove == 'nożyce') {
+	printMessage('Remis');
+
+} else if (playerMove == 'nieznany ruch') {
+	printMessage ('Beata oszukuje xd');
+
+} else {
+	printMessage ('error');
+
+}
 
 
-
-console.log(roundNumber);
-console.log(computerMove);
-console.log(playerMove);
+console.log('ruch komputera '+computerMove);
+console.log('ruch Beaty '+playerMove);
