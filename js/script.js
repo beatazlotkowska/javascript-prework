@@ -1,3 +1,6 @@
+let sumComputerWinner = 0;
+let sumBeataWinner = 0;
+
 function playGame (argMove){ 
 
 	clearMessages();
@@ -20,19 +23,34 @@ function playGame (argMove){
 
 	function displayResult(argComputerMove, argPlayerMove){
 		console.log('moves:', argComputerMove, argPlayerMove);
+		printMessage('Computer: ' + argComputerMove + ' | Beata: ' + argPlayerMove );
 
 		if (argComputerMove == 'kamień' && argPlayerMove == 'papier' || argComputerMove == 'nożyce' && argPlayerMove == 'kamień' || argComputerMove == 'papier' && argPlayerMove == 'nożyce' ) {
 			printMessage('Beata wygrała');
+			sumBeataWinner++;
 
 		} else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce' || argComputerMove == 'papier' && argPlayerMove == 'kamień' || argComputerMove == 'nożyce' && argPlayerMove == 'papier' ) {
 			printMessage('Computer wins');
+			sumComputerWinner++;
+			
 
 		} else if (argPlayerMove == 'nieznany ruch') {
 			printMessage ('Beata oszukuje xd');
 
 		} else if (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce' || argComputerMove == 'papier' && argPlayerMove == 'papier' || argComputerMove == 'kamień' && argPlayerMove == 'kamień'){
 			printMessage('Remis');
+			
+
 		}
+		
+		if (sumComputerWinner >= 3 || sumBeataWinner >= 3){
+			printResult('<b>end game</b> <br> Computer: ' +sumComputerWinner + ' Beata: ' + sumBeataWinner);
+
+		} else{
+			printResult('Computer: ' +sumComputerWinner + ' Beata: ' + sumBeataWinner);
+
+		}
+
 
 	}
 
@@ -46,23 +64,35 @@ function playGame (argMove){
 	let playerInput = argMove;
 	let playerMove = getMoveName(playerInput);
 
-	displayResult(computerMove, playerMove);
+	console.log('ruch komputera: '+computerMove);
+	console.log('ruch Beaty: '+playerMove);
 
-
-	console.log('ruch komputera '+computerMove);
-	console.log('ruch Beaty '+playerMove);
-
-
+	return displayResult(computerMove, playerMove);
 }
+
+
+
+let resultGameWin = 0;
+
+ 
+//console.log('aaa:' +sumBeataWinner);
+
 
 document.getElementById('play-paper').addEventListener('click', function(){
   playGame(2);
+  //printResult(sumComputerWinner + '-' + sumBeataWinner);
+
 });
 
 document.getElementById('play-rock').addEventListener('click', function(){
   playGame(1);
+  //printResult(sumComputerWinner + '-' + sumBeataWinner);
+
 });
 
 document.getElementById('play-scissors').addEventListener('click', function(){
   playGame(3);
+  //;
+
 });
+
